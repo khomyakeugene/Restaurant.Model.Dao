@@ -4,15 +4,15 @@ package com.company.restaurant.model;
  * Created by Yevhen on 21.05.2016.
  */
 public class SimpleDic {
-    private int Id;
+    private int id;
     private String name;
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {

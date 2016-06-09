@@ -56,12 +56,12 @@ public abstract class DaoTable {
     }
 
     protected String fieldEntityQueryCondition(String fieldName, Object value, String selectFields, String entityName) {
-        return String.format(SQL_SELECT_BY_FIELD_VALUE, selectFields, entityName, fieldName,
-                DaoTable.toString(value)) + orderByCondition(selectFields);
+        return String.format(SQL_SELECT_BY_FIELD_VALUE, selectFields, entityName, fieldName, value) +
+                orderByCondition(selectFields);
     }
 
     protected String fieldQueryCondition(String fieldName, Object value, String selectFields) {
-        return fieldEntityQueryCondition(fieldName, value, selectFields, String.format("\"%s\"", getViewName()));
+        return fieldEntityQueryCondition(fieldName, toString(value), selectFields, String.format("\"%s\"", getViewName()));
     }
 
     protected String fieldQueryCondition(String fieldName, Object value) {
