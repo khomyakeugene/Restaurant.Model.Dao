@@ -9,8 +9,8 @@ public abstract class DaoTable {
     private static final String SQL_DELETE_EXPRESSION_PATTERN = "DELETE FROM \"%s\" WHERE (%s = %s)";
     private static final String SQL_UPDATE_BY_FIELD_VALUE = "UPDATE \"%s\" SET %s WHERE (%s = %s)";
     private static final String SQL_UPDATE_SET_SECTION_PART_PATTERN = "%s = %s";
-    private static final String SQL_ALL_FIELD_OF_ALL_RECORDS = "SELECT * FROM \"%s\"";
-    private static final String SQL_SELECT_BY_FIELD_VALUE = "SELECT %s FROM \"%s\" WHERE (%s = %s)";
+    private static final String SQL_SELECT_ALL_RECORDS = "SELECT %s FROM %s";
+    private static final String SQL_SELECT_BY_FIELD_VALUE = "SELECT %s FROM %s WHERE (%s = %s)";
     private static final String SQL_SELECT_BY_TWO_FIELD_VALUE = "SELECT %s FROM \"%s\" WHERE (%s = %s) AND (%s = %s)";
     private static final String SQL_ALL_FIELDS_WILDCARD = "*";
 
@@ -47,21 +47,29 @@ public abstract class DaoTable {
         return (selectFields.equals(SQL_ALL_FIELDS_WILDCARD)) ? orderByCondition() : "";
     }
 
-    protected String allQueryCondition() {
-        return String.format(SQL_ALL_FIELD_OF_ALL_RECORDS, getViewName()) + orderByCondition();
+    protected String allEntityQueryCondition(String entityName) {
+        return String.format(SQL_SELECT_ALL_RECORDS, SQL_ALL_FIELDS_WILDCARD, entityName) + orderByCondition();
     }
 
-    protected String maxFieldValueExpression(String fieldName) {
-        return String.format(SQL_MAX_STATEMENT, fieldName);
+    protected String allQueryCondition() {
+        return allEntityQueryCondition(String.format("\"%s\"", getViewName()));
+    }
+
+    protected String fieldEntityQueryCondition(String fieldName, Object value, String selectFields, String entityName) {
+        return String.format(SQL_SELECT_BY_FIELD_VALUE, selectFields, entityName, fieldName,
+                DaoTable.toString(value)) + orderByCondition(selectFields);
     }
 
     protected String fieldQueryCondition(String fieldName, Object value, String selectFields) {
-        return String.format(SQL_SELECT_BY_FIELD_VALUE, selectFields, getViewName(), fieldName,
-                DaoTable.toString(value)) + orderByCondition(selectFields);
+        return fieldEntityQueryCondition(fieldName, value, selectFields, String.format("\"%s\"", getViewName()));
     }
 
     protected String fieldQueryCondition(String fieldName, Object value) {
         return fieldQueryCondition(fieldName, value, SQL_ALL_FIELDS_WILDCARD);
+    }
+
+    protected String maxFieldValueExpression(String fieldName) {
+        return String.format(SQL_MAX_STATEMENT, fieldName);
     }
 
     protected String twoFieldsFromTableQueryCondition(String fieldName_1, Object value_1, String fieldName_2, Object value_2,
