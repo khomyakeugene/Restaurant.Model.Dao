@@ -30,6 +30,12 @@ public class SqlExpressions {
         return fromExpression(entityName, fieldCondition(fieldName, value), orderByCondition);
     }
 
+    public static String fromExpressionWithFieldCondition(String entityName,
+                                                          String fieldName,
+                                                          Object value) {
+        return fromExpressionWithFieldCondition(entityName, fieldName, value, null);
+    }
+
     public static String allEntityQueryCondition(String entityName,
                                                  String selectFields,
                                                  String orderByCondition) {
