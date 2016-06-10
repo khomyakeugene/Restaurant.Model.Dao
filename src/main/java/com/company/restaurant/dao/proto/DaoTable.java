@@ -9,29 +9,12 @@ public abstract class DaoTable {
     private static final String SQL_DELETE_EXPRESSION_PATTERN = "DELETE FROM \"%s\" WHERE (%s = %s)";
     private static final String SQL_UPDATE_BY_FIELD_VALUE = "UPDATE \"%s\" SET %s WHERE (%s = %s)";
     private static final String SQL_UPDATE_SET_SECTION_PART_PATTERN = "%s = %s";
-    private static final String SQL_SELECT_ALL_RECORDS = "SELECT %s FROM %s";
-    private static final String SQL_SELECT_BY_FIELD_VALUE = "SELECT %s FROM %s WHERE (%s = %s)";
     private static final String SQL_SELECT_BY_TWO_FIELD_VALUE = "SELECT %s FROM \"%s\" WHERE (%s = %s) AND (%s = %s)";
     private static final String SQL_ALL_FIELDS_WILDCARD = "*";
 
     protected String tableName;
     protected String viewName;
     protected String orderByCondition;
-
-    public static String toString(Object object) {
-        String result;
-
-        if (object == null) {
-            result = "null";
-        } else {
-            result = object.toString();
-            if (object instanceof String) {
-                result =  "'" + result + "'";
-            }
-        }
-
-        return result;
-    }
 
     protected abstract void initMetadata();
 
@@ -47,35 +30,16 @@ public abstract class DaoTable {
         return (selectFields.equals(SQL_ALL_FIELDS_WILDCARD)) ? orderByCondition() : "";
     }
 
-    protected String allEntityQueryCondition(String entityName, String selectFields, String orderByCondition) {
-        return String.format(SQL_SELECT_ALL_RECORDS, selectFields, entityName) +
-                ((orderByCondition != null) ? orderByCondition : "");
-    }
-
-    protected String allEntityQueryCondition(String entityName, String selectFields) {
-        return allEntityQueryCondition(entityName, selectFields, null);
-    }
-
     protected String allEntityQueryCondition(String entityName) {
-        return allEntityQueryCondition(entityName, SQL_ALL_FIELDS_WILDCARD, orderByCondition());
+        return SqlExpressions.allEntityQueryCondition(entityName, SQL_ALL_FIELDS_WILDCARD, orderByCondition());
     }
 
     protected String allQueryCondition() {
         return allEntityQueryCondition(String.format("\"%s\"", getViewName()));
     }
 
-    protected String fieldEntityQueryCondition(String fieldName, Object value, String selectFields, String entityName,
-                                               String orderByCondition) {
-        return String.format(SQL_SELECT_BY_FIELD_VALUE, selectFields, entityName, fieldName, value) +
-                ((orderByCondition != null) ? orderByCondition : "");
-    }
-
-    protected String fieldEntityQueryCondition(String fieldName, Object value, String selectFields, String entityName) {
-        return fieldEntityQueryCondition(fieldName, value, selectFields, entityName, null);
-    }
-
     protected String fieldQueryCondition(String fieldName, Object value, String selectFields) {
-        return fieldEntityQueryCondition(fieldName, toString(value), selectFields,
+        return SqlExpressions.fieldEntityQueryCondition(fieldName, SqlExpressions.toString(value), selectFields,
                 String.format("\"%s\"", getViewName()), orderByCondition(selectFields));
     }
 
@@ -87,20 +51,31 @@ public abstract class DaoTable {
         return String.format(SQL_MAX_STATEMENT, fieldName);
     }
 
-    protected String twoFieldsFromTableQueryCondition(String fieldName_1, Object value_1, String fieldName_2, Object value_2,
+    protected String twoFieldsFromTableQueryCondition(String fieldName_1,
+                                                      Object value_1,
+                                                      String fieldName_2,
+                                                      Object value_2,
                                                       String selectFields) {
-        return String.format(SQL_SELECT_BY_TWO_FIELD_VALUE, selectFields, tableName, fieldName_1, DaoTable.toString(value_1),
-                fieldName_2, DaoTable.toString(value_2)) + orderByCondition(selectFields);
+        return String.format(SQL_SELECT_BY_TWO_FIELD_VALUE, selectFields, tableName, fieldName_1,
+                SqlExpressions.toString(value_1), fieldName_2, SqlExpressions.toString(value_2)) +
+                orderByCondition(selectFields);
     }
 
-    protected String twoFieldsFromTableQueryCondition(String fieldName_1, Object value_1, String fieldName_2, Object value_2) {
+    protected String twoFieldsFromTableQueryCondition(String fieldName_1,
+                                                      Object value_1,
+                                                      String fieldName_2,
+                                                      Object value_2) {
         return twoFieldsFromTableQueryCondition(fieldName_1, value_1, fieldName_2, value_2, SQL_ALL_FIELDS_WILDCARD);
     }
 
-    private String twoFieldsFromViewQueryCondition(String fieldName_1, Object value_1, String fieldName_2, Object value_2,
+    private String twoFieldsFromViewQueryCondition(String fieldName_1,
+                                                   Object value_1,
+                                                   String fieldName_2,
+                                                   Object value_2,
                                                    String selectFields) {
         return String.format(SQL_SELECT_BY_TWO_FIELD_VALUE, selectFields, getViewName(), fieldName_1,
-                DaoTable.toString(value_1), fieldName_2, DaoTable.toString(value_2)) + orderByCondition(selectFields);
+                SqlExpressions.toString(value_1), fieldName_2, SqlExpressions.toString(value_2)) +
+                orderByCondition(selectFields);
     }
 
     protected String twoFieldsFromViewQueryCondition(String fieldName_1, Object value_1, String fieldName_2, Object value_2) {
@@ -108,7 +83,7 @@ public abstract class DaoTable {
     }
 
     protected String buildDeleteExpression(String fieldName, Object value) {
-        return String.format(SQL_DELETE_EXPRESSION_PATTERN, tableName, fieldName, DaoTable.toString(value));
+        return String.format(SQL_DELETE_EXPRESSION_PATTERN, tableName, fieldName, SqlExpressions.toString(value));
     }
 
     protected String buildOneFieldByOneFieldUpdateCondition(String updateFieldName,
@@ -116,7 +91,8 @@ public abstract class DaoTable {
                                                             String conditionFieldName,
                                                             Object conditionFieldValue) {
         return String.format(SQL_UPDATE_BY_FIELD_VALUE, tableName,
-                String.format(SQL_UPDATE_SET_SECTION_PART_PATTERN, updateFieldName, toString(updateFieldValue)),
-                conditionFieldName, toString(conditionFieldValue));
+                String.format(SQL_UPDATE_SET_SECTION_PART_PATTERN, updateFieldName,
+                        SqlExpressions.toString(updateFieldValue)), conditionFieldName,
+                SqlExpressions.toString(conditionFieldValue));
     }
 }
