@@ -47,21 +47,36 @@ public abstract class DaoTable {
         return (selectFields.equals(SQL_ALL_FIELDS_WILDCARD)) ? orderByCondition() : "";
     }
 
+    protected String allEntityQueryCondition(String entityName, String selectFields, String orderByCondition) {
+        return String.format(SQL_SELECT_ALL_RECORDS, selectFields, entityName) +
+                ((orderByCondition != null) ? orderByCondition : "");
+    }
+
+    protected String allEntityQueryCondition(String entityName, String selectFields) {
+        return allEntityQueryCondition(entityName, selectFields, null);
+    }
+
     protected String allEntityQueryCondition(String entityName) {
-        return String.format(SQL_SELECT_ALL_RECORDS, SQL_ALL_FIELDS_WILDCARD, entityName) + orderByCondition();
+        return allEntityQueryCondition(entityName, SQL_ALL_FIELDS_WILDCARD, orderByCondition());
     }
 
     protected String allQueryCondition() {
         return allEntityQueryCondition(String.format("\"%s\"", getViewName()));
     }
 
-    protected String fieldEntityQueryCondition(String fieldName, Object value, String selectFields, String entityName) {
+    protected String fieldEntityQueryCondition(String fieldName, Object value, String selectFields, String entityName,
+                                               String orderByCondition) {
         return String.format(SQL_SELECT_BY_FIELD_VALUE, selectFields, entityName, fieldName, value) +
-                orderByCondition(selectFields);
+                ((orderByCondition != null) ? orderByCondition : "");
+    }
+
+    protected String fieldEntityQueryCondition(String fieldName, Object value, String selectFields, String entityName) {
+        return fieldEntityQueryCondition(fieldName, value, selectFields, entityName, null);
     }
 
     protected String fieldQueryCondition(String fieldName, Object value, String selectFields) {
-        return fieldEntityQueryCondition(fieldName, toString(value), selectFields, String.format("\"%s\"", getViewName()));
+        return fieldEntityQueryCondition(fieldName, toString(value), selectFields,
+                String.format("\"%s\"", getViewName()), orderByCondition(selectFields));
     }
 
     protected String fieldQueryCondition(String fieldName, Object value) {
