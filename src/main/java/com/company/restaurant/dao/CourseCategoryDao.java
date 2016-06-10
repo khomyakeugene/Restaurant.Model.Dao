@@ -14,7 +14,7 @@ public interface CourseCategoryDao {
 
     CourseCategory findCourseCategoryByName(String name);
 
-    CourseCategory findCourseCategoryById(int CourseCategoryId);
+    CourseCategory findCourseCategoryById(int courseCategoryId);
 
     List<CourseCategory> findAllCourseCategories();
 }

@@ -176,8 +176,6 @@ public abstract class RestaurantModelDaoTest {
 
         jobPositionDao.delJobPosition(name);
         assertTrue(jobPositionDao.findJobPositionByName(name) == null);
-        // Test delete of non-existent data
-        jobPositionDao.delJobPosition(name);
 
         for (JobPosition jP : jobPositionDao.findAllJobPositions()) {
             System.out.println("Job position Id :" + jP.getId() +
@@ -215,9 +213,6 @@ public abstract class RestaurantModelDaoTest {
 
         employeeDao.delEmployee(employee);
         assertTrue(employeeDao.findEmployeeById(employeeId) == null);
-        // Test delete of non-existent data
-        employeeDao.delEmployee(employee);
-        employeeDao.delEmployee(employee.getEmployeeId());
     }
 
     @Test(timeout = 2000)
@@ -315,8 +310,6 @@ public abstract class RestaurantModelDaoTest {
 
         menuDao.delMenu(name);
         assertTrue(menuDao.findMenuByName(name) == null);
-        // Test delete of non-existent data
-        menuDao.delMenu(menu);
     }
 
     @Test(timeout = 2000)
