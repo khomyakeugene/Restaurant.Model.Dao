@@ -9,7 +9,6 @@ public abstract class DaoTable {
     private static final String SQL_DELETE_EXPRESSION_PATTERN = "DELETE FROM \"%s\" WHERE (%s = %s)";
     private static final String SQL_UPDATE_BY_FIELD_VALUE = "UPDATE \"%s\" SET %s WHERE (%s = %s)";
     private static final String SQL_UPDATE_SET_SECTION_PART_PATTERN = "%s = %s";
-    private static final String SQL_SELECT_BY_TWO_FIELD_VALUE = "SELECT %s FROM \"%s\" WHERE (%s = %s) AND (%s = %s)";
     private static final String SQL_ALL_FIELDS_WILDCARD = "*";
 
     protected String tableName;
@@ -46,7 +45,7 @@ public abstract class DaoTable {
     }
 
     protected String allEntityQueryCondition(String entityName) {
-        return SqlExpressions.allEntityQueryCondition(entityName, SQL_ALL_FIELDS_WILDCARD, orderByCondition());
+        return SqlExpressions.allEntityQueryCondition(SQL_ALL_FIELDS_WILDCARD, entityName, orderByCondition());
     }
 
     protected String allQueryCondition() {
@@ -54,8 +53,8 @@ public abstract class DaoTable {
     }
 
     protected String fieldQueryCondition(String fieldName, Object value, String selectFields) {
-        return SqlExpressions.fieldEntityQueryCondition(fieldName, toString(value), selectFields,
-                String.format("\"%s\"", getViewName()), orderByCondition(selectFields));
+        return SqlExpressions.fieldEntityQueryCondition(selectFields, String.format("\"%s\"", getViewName()), fieldName, toString(value),
+                orderByCondition(selectFields));
     }
 
     protected String fieldQueryCondition(String fieldName, Object value) {
@@ -66,33 +65,36 @@ public abstract class DaoTable {
         return String.format(SQL_MAX_STATEMENT, fieldName);
     }
 
-    protected String twoFieldsFromTableQueryCondition(String fieldName_1,
-                                                      Object value_1,
-                                                      String fieldName_2,
-                                                      Object value_2,
+    protected String twoFieldsFromTableQueryCondition(String fieldName1,
+                                                      Object value1,
+                                                      String fieldName2,
+                                                      Object value2,
                                                       String selectFields) {
-        return String.format(SQL_SELECT_BY_TWO_FIELD_VALUE, selectFields, tableName, fieldName_1,
-                toString(value_1), fieldName_2, toString(value_2)) + orderByCondition(selectFields);
+        return SqlExpressions.twoFieldsEntityQueryCondition(selectFields, tableName, fieldName1,
+                toString(value1), fieldName2, toString(value2), orderByCondition(selectFields));
     }
 
-    protected String twoFieldsFromTableQueryCondition(String fieldName_1,
-                                                      Object value_1,
-                                                      String fieldName_2,
-                                                      Object value_2) {
-        return twoFieldsFromTableQueryCondition(fieldName_1, value_1, fieldName_2, value_2, SQL_ALL_FIELDS_WILDCARD);
+    protected String twoFieldsFromTableQueryCondition(String fieldName1,
+                                                      Object value1,
+                                                      String fieldName2,
+                                                      Object value2) {
+        return twoFieldsFromTableQueryCondition(fieldName1, value1, fieldName2, value2, SQL_ALL_FIELDS_WILDCARD);
     }
 
-    private String twoFieldsFromViewQueryCondition(String fieldName_1,
-                                                   Object value_1,
-                                                   String fieldName_2,
-                                                   Object value_2,
+    private String twoFieldsFromViewQueryCondition(String fieldName1,
+                                                   Object value1,
+                                                   String fieldName2,
+                                                   Object value2,
                                                    String selectFields) {
-        return String.format(SQL_SELECT_BY_TWO_FIELD_VALUE, selectFields, getViewName(), fieldName_1,
-                toString(value_1), fieldName_2, toString(value_2)) + orderByCondition(selectFields);
+        return SqlExpressions.twoFieldsEntityQueryCondition(selectFields, getViewName(), fieldName1,
+                toString(value1), fieldName2, toString(value2), orderByCondition(selectFields));
     }
 
-    protected String twoFieldsFromViewQueryCondition(String fieldName_1, Object value_1, String fieldName_2, Object value_2) {
-        return twoFieldsFromViewQueryCondition(fieldName_1, value_1, fieldName_2, value_2, SQL_ALL_FIELDS_WILDCARD);
+    protected String twoFieldsFromViewQueryCondition(String fieldName1,
+                                                     Object value1,
+                                                     String fieldName2,
+                                                     Object value2) {
+        return twoFieldsFromViewQueryCondition(fieldName1, value1, fieldName2, value2, SQL_ALL_FIELDS_WILDCARD);
     }
 
     protected String buildDeleteExpression(String fieldName, Object value) {
