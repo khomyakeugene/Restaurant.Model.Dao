@@ -14,11 +14,11 @@ public interface EmployeeDao {
 
     String delEmployee(int employeeId);
 
-    Employee findEmployeeById(int id);
+    Employee findEmployeeById(int employeeId);
 
     List<Employee> findEmployeeByFirstName(String firstName);
 
-    List<Employee> findEmployeeBySecondName(String lastName);
+    List<Employee> findEmployeeBySecondName(String secondName);
 
     List<Employee> findEmployeeByFirstAndSecondName(String firstName, String secondName);
 
