@@ -33,4 +33,22 @@ public class LinkObject  implements Serializable {
     public void setLinkData(String linkData) {
         this.linkData = linkData;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof LinkObject)) return false;
+
+        LinkObject that = (LinkObject) o;
+
+        return firstId == that.firstId && secondId == that.secondId;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstId;
+        result = 31 * result + secondId;
+        return result;
+    }
 }
