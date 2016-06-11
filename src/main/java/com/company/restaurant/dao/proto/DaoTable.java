@@ -7,7 +7,6 @@ import java.util.List;
  */
 
 public abstract class DaoTable<T> {
-    private static final String SQL_MAX_STATEMENT = "MAX(%s)";
     private static final String SQL_DELETE_EXPRESSION_PATTERN = "DELETE FROM \"%s\" WHERE (%s = %s)";
     private static final String SQL_UPDATE_BY_FIELD_VALUE = "UPDATE \"%s\" SET %s WHERE (%s = %s)";
     private static final String SQL_UPDATE_SET_SECTION_PART_PATTERN = "%s = %s";
@@ -65,10 +64,6 @@ public abstract class DaoTable<T> {
 
     protected String fieldQueryCondition(String fieldName, Object value) {
         return fieldQueryCondition(fieldName, value, SQL_ALL_FIELDS_WILDCARD);
-    }
-
-    protected String maxFieldValueExpression(String fieldName) {
-        return String.format(SQL_MAX_STATEMENT, fieldName);
     }
 
     protected String twoFieldsFromTableQueryCondition(String fieldName1,

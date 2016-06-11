@@ -6,6 +6,7 @@ public class SqlExpressions {
     private static final String SQL_WHERE_PATTERN = "WHERE (%s)";
     private static final String SQL_EQUALITY_PATTERN = "(%s = %s)";
     private static final String SQL_AND_PATTERN = "(%s AND %s)";
+    private static final String SQL_MAX_STATEMENT = "MAX(%s)";
 
     public static String selectExpression(String selectFields) {
         return String.format(SQL_SELECT_PATTERN, selectFields);
@@ -113,5 +114,9 @@ public class SqlExpressions {
                                                        String fieldName2,
                                                        Object value2) {
         return twoFieldsEntityQueryCondition(selectFields, entityName, fieldName1, value1, fieldName2, value2, null);
+    }
+
+    public static String maxFieldValueExpression(String fieldName) {
+        return String.format(SQL_MAX_STATEMENT, fieldName);
     }
 }
