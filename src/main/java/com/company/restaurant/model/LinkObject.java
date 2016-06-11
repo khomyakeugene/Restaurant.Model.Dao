@@ -1,9 +1,11 @@
 package com.company.restaurant.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Yevhen on 21.05.2016.
  */
-public class LinkObject {
+public class LinkObject  implements Serializable {
     private int firstId;
     private int secondId;
     protected String linkData;
