@@ -2,7 +2,7 @@ package com.company.restaurant.dao;
 
 import com.company.restaurant.model.Course;
 import com.company.restaurant.model.Menu;
-import com.company.restaurant.model.MenuCourseList;
+import com.company.restaurant.model.MenuCourseView;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public interface MenuDao {
 
     void delCourseFromMenu(Menu menu, Course course);
 
-    List<MenuCourseList> findMenuCourses(Menu menu);
+    List<MenuCourseView> findMenuCourses(Menu menu);
 
-    MenuCourseList findMenuCourseByCourseId(Menu menu, int courseId);
+    MenuCourseView findMenuCourseByCourseId(Menu menu, int courseId);
 }

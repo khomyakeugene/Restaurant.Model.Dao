@@ -1,10 +1,12 @@
 package com.company.restaurant.dao.proto;
 
+import java.util.List;
+
 /**
  * Created by Yevhen on 09.06.2016.
  */
 
-public abstract class DaoTable {
+public abstract class DaoTable<T> {
     private static final String SQL_MAX_STATEMENT = "MAX(%s)";
     private static final String SQL_DELETE_EXPRESSION_PATTERN = "DELETE FROM \"%s\" WHERE (%s = %s)";
     private static final String SQL_UPDATE_BY_FIELD_VALUE = "UPDATE \"%s\" SET %s WHERE (%s = %s)";
@@ -16,6 +18,10 @@ public abstract class DaoTable {
     protected String orderByCondition;
 
     protected abstract void initMetadata();
+
+    public T getFirstFromList(List<T> objects) {
+        return  (objects != null && objects.size() > 0) ? objects.get(0) : null;
+    }
 
     private String getViewName() {
         return (viewName != null && viewName.length() > 0) ? viewName : tableName;

@@ -3,36 +3,12 @@ package com.company.restaurant.model;
 /**
  * Created by Yevhen on 21.05.2016.
  */
-public class MenuCourseList extends IntegerLinkObject {
+public class MenuCourseView extends MenuCourse {
     private int courseCategoryId;
     private String courseName;
     private float courseWeight;
     private float courseCost;
     private String courseCategoryName;
-
-    public int getMenuId() {
-        return getFirstId();
-    }
-
-    public void setMenuId(int orderId) {
-        setFirstId(orderId);
-    }
-
-    public int getCourseId() {
-        return getSecondId();
-    }
-
-    public void setCourseId(int courseId) {
-        setSecondId(courseId);
-    }
-
-    public int getCourseNumber() {
-        return getIntegerLinkData();
-    }
-
-    public void setCourseNumber(int courseNumber) {
-        setIntegerLinkData(courseNumber);
-    }
 
     public int getCourseCategoryId() {
         return courseCategoryId;
