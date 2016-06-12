@@ -8,4 +8,3 @@ public class DataIntegrityException extends RuntimeException {
         super(reason);
     }
 }
-
