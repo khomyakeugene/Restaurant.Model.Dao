@@ -22,7 +22,6 @@ public class OrderView {
     private int tableNumber;
     private String tableDescription;
 
-
     public int getOrderId() {
         return orderId;
     }
