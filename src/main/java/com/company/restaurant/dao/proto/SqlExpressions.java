@@ -7,12 +7,13 @@ public class SqlExpressions {
     private static final String SQL_EQUALITY_PATTERN = "(%s = %s)";
     private static final String SQL_AND_PATTERN = "(%s AND %s)";
     private static final String SQL_MAX_STATEMENT = "MAX(%s)";
+    private static final String SQL_DELETE_EXPRESSION_PATTERN = "DELETE %s";
 
     public static String selectExpression(String selectFields) {
         return String.format(SQL_SELECT_PATTERN, selectFields);
     }
 
-    public static String whereCondition(String condition) {
+    public static String whereExpression(String condition) {
         return String.format(SQL_WHERE_PATTERN, condition);
     }
 
@@ -20,16 +21,20 @@ public class SqlExpressions {
         return String.format(SQL_EQUALITY_PATTERN, leftPart, rightPart);
     }
 
+    public static String deleteExpression(String condition) {
+        return String.format(SQL_DELETE_EXPRESSION_PATTERN, condition);
+    }
+
     public static String andCondition(String leftPart, String rightPart) {
         return String.format(SQL_AND_PATTERN, leftPart, rightPart);
     }
 
     public static String fieldCondition(String fieldName, Object value) {
-        return whereCondition(equalityCondition(fieldName, value));
+        return whereExpression(equalityCondition(fieldName, value));
     }
 
     public static String twoFieldAndCondition(String fieldName1, Object value1, String fieldName2, Object value2) {
-        return whereCondition(andCondition(equalityCondition(fieldName1, value1), equalityCondition(fieldName2, value2)));
+        return whereExpression(andCondition(equalityCondition(fieldName1, value1), equalityCondition(fieldName2, value2)));
     }
 
 

@@ -7,7 +7,6 @@ import java.util.List;
  */
 
 public abstract class DaoTable<T> {
-    private static final String SQL_DELETE_EXPRESSION_PATTERN = "DELETE FROM \"%s\" WHERE (%s = %s)";
     private static final String SQL_UPDATE_BY_FIELD_VALUE = "UPDATE \"%s\" SET %s WHERE (%s = %s)";
     private static final String SQL_UPDATE_SET_SECTION_PART_PATTERN = "%s = %s";
     private static final String SQL_ALL_FIELDS_WILDCARD = "*";
@@ -99,7 +98,8 @@ public abstract class DaoTable<T> {
     }
 
     protected String buildDeleteExpression(String fieldName, Object value) {
-        return String.format(SQL_DELETE_EXPRESSION_PATTERN, tableName, fieldName, toString(value));
+        return SqlExpressions.deleteExpression(SqlExpressions.fromExpressionWithFieldCondition(
+               String.format("\"%s\"", tableName), fieldName, toString(value)));
     }
 
     protected String buildOneFieldByOneFieldUpdateCondition(String updateFieldName,
