@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 /**
  * Created by Yevhen on 22.05.2016.
  */
-public class Order {
+public class OrderView {
     private int orderId;
     private int tableId;
     private int employeeId;
