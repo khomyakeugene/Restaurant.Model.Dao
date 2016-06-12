@@ -14,7 +14,7 @@ public interface OrderViewDao {
 
     String delOrder(OrderView orderView);
 
-    OrderView findOrderById(int id);
+    OrderView findOrderById(int orderId);
 
     List<OrderView> findOrderByNumber(String orderNumber);
 
