@@ -7,8 +7,8 @@ public class MenuCourseView extends IntegerLinkObject {
     // Is is dangerous to inherit <MenuCourseView> from <MenuCourse >, because, I cannot understand why, but
     // when using then separate hibernate-hbm.xml-mapping, hibernate supposes, that <MenuCourse>-class should be
     // mapped to the same table (view) <v_menu_courses_list> as its descendant <MenuCourseView>-class, but not
-    // to concrete table <menu_courses_list>, as I am telling hibernate, and "right now" I do not know how I can avoid
-    // such "inheritance"
+    // to concrete table <menu_courses_list>, as I am telling hibernate in MenuCourse.hbm.xml file,
+    // and "right now" I do not know how I can avoid to "produce" such "inheritance"
     private int courseCategoryId;
     private String courseName;
     private float courseWeight;
