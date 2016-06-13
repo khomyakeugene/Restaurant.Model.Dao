@@ -3,7 +3,7 @@ package com.company.restaurant.model;
 /**
  * Created by Yevhen on 23.05.2016.
  */
-public class OrderCourse extends IntegerLinkObject {
+public class OrderCourseView extends IntegerLinkObject {
     private int courseCategoryId;
     private String courseName;
     private float courseWeight;
