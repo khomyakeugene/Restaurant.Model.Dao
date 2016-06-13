@@ -7,8 +7,6 @@ import java.util.List;
  */
 
 public abstract class DaoTable<T> {
-    private static final String SQL_UPDATE_BY_FIELD_VALUE = "UPDATE \"%s\" SET %s WHERE (%s = %s)";
-    private static final String SQL_UPDATE_SET_SECTION_PART_PATTERN = "%s = %s";
     private static final String SQL_ALL_FIELDS_WILDCARD = "*";
 
     protected String tableName;
@@ -106,8 +104,8 @@ public abstract class DaoTable<T> {
                                                             Object updateFieldValue,
                                                             String conditionFieldName,
                                                             Object conditionFieldValue) {
-        return String.format(SQL_UPDATE_BY_FIELD_VALUE, tableName,
-                String.format(SQL_UPDATE_SET_SECTION_PART_PATTERN, updateFieldName, toString(updateFieldValue)),
-                conditionFieldName, toString(conditionFieldValue));
+        return SqlExpressions.oneFieldByOneFieldConditionUpdateExpression(String.format("\"%s\"", tableName),
+                updateFieldName, toString(updateFieldValue), conditionFieldName,
+                toString(conditionFieldValue));
     }
 }

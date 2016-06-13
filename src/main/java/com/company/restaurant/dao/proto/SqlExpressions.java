@@ -8,6 +8,8 @@ public class SqlExpressions {
     private static final String SQL_AND_PATTERN = "(%s AND %s)";
     private static final String SQL_MAX_STATEMENT = "MAX(%s)";
     private static final String SQL_DELETE_EXPRESSION_PATTERN = "DELETE %s";
+    private static final String SQL_UPDATE_EXPRESSION_PATTERN = "UPDATE %s SET %s %s";
+    private static final String SQL_UPDATE_SET_SECTION_PART_PATTERN = "%s = %s";
 
     public static String selectExpression(String selectFields) {
         return String.format(SQL_SELECT_PATTERN, selectFields);
@@ -23,6 +25,12 @@ public class SqlExpressions {
 
     public static String deleteExpression(String condition) {
         return String.format(SQL_DELETE_EXPRESSION_PATTERN, condition);
+    }
+
+    public static String updateExpression(String entityName,
+                                          String updateSet,
+                                          String updateCondition) {
+        return String.format(SQL_UPDATE_EXPRESSION_PATTERN, entityName, updateSet, updateCondition);
     }
 
     public static String andCondition(String leftPart, String rightPart) {
@@ -123,5 +131,16 @@ public class SqlExpressions {
 
     public static String maxFieldValueExpression(String fieldName) {
         return String.format(SQL_MAX_STATEMENT, fieldName);
+    }
+
+    public static String oneFieldByOneFieldConditionUpdateExpression(String entityName,
+                                                                     String updateFieldName,
+                                                                     Object updateFieldValue,
+                                                                     String conditionFieldName,
+                                                                     Object conditionFieldValue) {
+
+        return updateExpression(entityName, String.format(SQL_UPDATE_SET_SECTION_PART_PATTERN,
+                updateFieldName, updateFieldValue), whereExpression(String.format(
+                SQL_EQUALITY_PATTERN, conditionFieldName, conditionFieldValue)));
     }
 }
