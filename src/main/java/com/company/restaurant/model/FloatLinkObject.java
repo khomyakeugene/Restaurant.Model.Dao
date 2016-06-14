@@ -4,8 +4,8 @@ package com.company.restaurant.model;
  * Created by Yevhen on 23.05.2016.
  */
 public class FloatLinkObject extends LinkObject  {
-    public float getFloatLinkData() {
-        return Float.parseFloat(linkData);
+    public Float getFloatLinkData() {
+        return (linkData == null) ? null : Float.parseFloat(linkData);
     }
 
     public void setFloatLinkData(Float floatValue) {
