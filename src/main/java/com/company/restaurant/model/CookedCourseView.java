@@ -6,8 +6,11 @@ import java.sql.Timestamp;
 /**
  * Created by Yevhen on 23.05.2016.
  */
-public class CookedCourseView extends FloatLinkObject implements Serializable {
+public class CookedCourseView implements Serializable {
+    private int employeeId;
+    private int courseId;
     private Timestamp cookDatetime;
+    private Float cookedWeight;
     private int courseCategoryId;
     private String courseName;
     private Float courseWeight;
@@ -18,28 +21,28 @@ public class CookedCourseView extends FloatLinkObject implements Serializable {
     private String employeePhoneNumber;
     private Float employeeSalary;
 
-    public int getCourseId() {
-        return getFirstId();
-    }
-
-    public void setCourseId(int courseId) {
-        setFirstId(courseId);
-    }
-
     public int getEmployeeId() {
-        return getSecondId();
+        return employeeId;
     }
 
     public void setEmployeeId(int employeeId) {
-        setSecondId(employeeId);
+        this.employeeId = employeeId;
     }
 
-    public Float getCookWeight() {
-        return getFloatLinkData();
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCookWeight(Float cookWeight) {
-        setFloatLinkData(cookWeight);
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
+    public Float getCookedWeight() {
+        return cookedWeight;
+    }
+
+    public void setCookedWeight(Float cookedWeight) {
+        this.cookedWeight = cookedWeight;
     }
 
     public Timestamp getCookDatetime() {

@@ -7,10 +7,10 @@ import java.sql.Timestamp;
  * Created by Yevhen on 14.06.2016.
  */
 public class CookedCourse implements Serializable {
-    int employeeId;
-    int courseId;
-    Timestamp cookDatetime;
-    Float weight;
+    private int employeeId;
+    private int courseId;
+    private Timestamp cookDatetime;
+    private Float weight;
 
     public int getEmployeeId() {
         return employeeId;
