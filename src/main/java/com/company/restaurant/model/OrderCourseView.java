@@ -26,11 +26,11 @@ public class OrderCourseView extends IntegerLinkObject {
         setSecondId(orderId);
     }
 
-    public int getCourseQuantity() {
+    public Integer getCourseQuantity() {
         return getIntegerLinkData();
     }
 
-    public void setCourseQuantity(int courseQuantity) {
+    public void setCourseQuantity(Integer courseQuantity) {
         setIntegerLinkData(courseQuantity);
     }
 

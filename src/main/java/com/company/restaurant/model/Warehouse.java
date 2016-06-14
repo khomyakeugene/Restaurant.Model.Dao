@@ -29,11 +29,11 @@ public class Warehouse extends FloatLinkObject {
         setSecondId(portionId);
     }
 
-    public float getAmount() {
+    public Float getAmount() {
         return getFloatLinkData();
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(Float amount) {
         setFloatLinkData(amount);
     }
 

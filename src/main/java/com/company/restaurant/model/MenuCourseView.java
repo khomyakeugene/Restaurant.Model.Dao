@@ -31,13 +31,14 @@ public class MenuCourseView extends IntegerLinkObject {
         setSecondId(courseId);
     }
 
-    public int getCourseNumber() {
+    public Integer getCourseNumber() {
         return getIntegerLinkData();
     }
 
-    public void setCourseNumber(int courseNumber) {
+    public void setCourseNumber(Integer courseNumber) {
         setIntegerLinkData(courseNumber);
     }
+
     public int getCourseCategoryId() {
         return courseCategoryId;
     }
