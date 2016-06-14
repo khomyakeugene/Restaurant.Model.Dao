@@ -10,7 +10,7 @@ public class CookedCourseView implements Serializable {
     private int employeeId;
     private int courseId;
     private Timestamp cookDatetime;
-    private Float cookedWeight;
+    private Float cookWeight;
     private int courseCategoryId;
     private String courseName;
     private Float courseWeight;
@@ -37,12 +37,12 @@ public class CookedCourseView implements Serializable {
         this.courseId = courseId;
     }
 
-    public Float getCookedWeight() {
-        return cookedWeight;
+    public Float getCookWeight() {
+        return cookWeight;
     }
 
-    public void setCookedWeight(Float cookedWeight) {
-        this.cookedWeight = cookedWeight;
+    public void setCookWeight(Float cookWeight) {
+        this.cookWeight = cookWeight;
     }
 
     public Timestamp getCookDatetime() {
