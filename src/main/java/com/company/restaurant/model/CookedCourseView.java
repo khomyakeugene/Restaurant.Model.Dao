@@ -5,17 +5,17 @@ import java.sql.Timestamp;
 /**
  * Created by Yevhen on 23.05.2016.
  */
-public class CookedCourse extends FloatLinkObject {
+public class CookedCourseView extends FloatLinkObject {
     private Timestamp cookDatetime;
     private int courseCategoryId;
     private String courseName;
-    private float courseWeight;
-    private float courseCost;
+    private Float courseWeight;
+    private Float courseCost;
     private int employeeJobPositionId;
     private String employeeFirstName;
     private String employeeSecondName;
     private String employeePhoneNumber;
-    private float employeeSalary;
+    private Float employeeSalary;
 
     public int getCourseId() {
         return getFirstId();
@@ -65,19 +65,19 @@ public class CookedCourse extends FloatLinkObject {
         this.courseName = courseName;
     }
 
-    public float getCourseWeight() {
+    public Float getCourseWeight() {
         return courseWeight;
     }
 
-    public void setCourseWeight(float courseWeight) {
+    public void setCourseWeight(Float courseWeight) {
         this.courseWeight = courseWeight;
     }
 
-    public float getCourseCost() {
+    public Float getCourseCost() {
         return courseCost;
     }
 
-    public void setCourseCost(float courseCost) {
+    public void setCourseCost(Float courseCost) {
         this.courseCost = courseCost;
     }
 
@@ -113,11 +113,11 @@ public class CookedCourse extends FloatLinkObject {
         this.employeePhoneNumber = employeePhoneNumber;
     }
 
-    public float getEmployeeSalary() {
+    public Float getEmployeeSalary() {
         return employeeSalary;
     }
 
-    public void setEmployeeSalary(float employeeSalary) {
+    public void setEmployeeSalary(Float employeeSalary) {
         this.employeeSalary = employeeSalary;
     }
 }

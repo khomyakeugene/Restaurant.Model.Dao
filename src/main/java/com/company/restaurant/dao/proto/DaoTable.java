@@ -1,5 +1,6 @@
 package com.company.restaurant.dao.proto;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -34,7 +35,7 @@ public abstract class DaoTable<T> {
             result = "null";
         } else {
             result = object.toString();
-            if (object instanceof String) {
+            if ((object instanceof String) || (object instanceof Timestamp)) {
                 result = "'" + result + "'";
             }
         }
