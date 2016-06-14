@@ -1,11 +1,12 @@
 package com.company.restaurant.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by Yevhen on 23.05.2016.
  */
-public class CookedCourseView extends FloatLinkObject {
+public class CookedCourseView extends FloatLinkObject implements Serializable {
     private Timestamp cookDatetime;
     private int courseCategoryId;
     private String courseName;
