@@ -10,7 +10,7 @@ public class CookedCourse implements Serializable {
     private int employeeId;
     private int courseId;
     private Timestamp cookDatetime;
-    private Float weight;
+    private Float cookWeight;
 
     public int getEmployeeId() {
         return employeeId;
@@ -36,12 +36,12 @@ public class CookedCourse implements Serializable {
         this.cookDatetime = cookDatetime;
     }
 
-    public Float getWeight() {
-        return weight;
+    public Float getCookWeight() {
+        return cookWeight;
     }
 
-    public void setWeight(Float weight) {
-        this.weight = weight;
+    public void setCookWeight(Float cookWeight) {
+        this.cookWeight = cookWeight;
     }
 
     @Override
@@ -53,8 +53,8 @@ public class CookedCourse implements Serializable {
 
         return employeeId == that.employeeId && courseId == that.courseId &&
                 (cookDatetime != null ? cookDatetime.equals(that.cookDatetime) :
-                        that.cookDatetime == null && (weight != null ? weight.equals(that.weight) :
-                                that.weight == null));
+                        that.cookDatetime == null && (cookWeight != null ? cookWeight.equals(that.cookWeight) :
+                                that.cookWeight == null));
 
     }
 
@@ -63,7 +63,7 @@ public class CookedCourse implements Serializable {
         int result = employeeId;
         result = 31 * result + courseId;
         result = 31 * result + (cookDatetime != null ? cookDatetime.hashCode() : 0);
-        result = 31 * result + (weight != null ? weight.hashCode() : 0);
+        result = 31 * result + (cookWeight != null ? cookWeight.hashCode() : 0);
         return result;
     }
 }
