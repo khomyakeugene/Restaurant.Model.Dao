@@ -7,7 +7,7 @@ public class Warehouse extends FloatLinkObject {
     private String ingredientName;
     private int portionTypeId;
     private int measuringTypeId;
-    private float portionAmount;
+    private Float portionAmount;
     private String portionDescription;
     private String portionTypeName;
     private String MeasuringTypeCode;
@@ -61,11 +61,11 @@ public class Warehouse extends FloatLinkObject {
         this.measuringTypeId = measuringTypeId;
     }
 
-    public float getPortionAmount() {
+    public Float getPortionAmount() {
         return portionAmount;
     }
 
-    public void setPortionAmount(float portionAmount) {
+    public void setPortionAmount(Float portionAmount) {
         this.portionAmount = portionAmount;
     }
 
