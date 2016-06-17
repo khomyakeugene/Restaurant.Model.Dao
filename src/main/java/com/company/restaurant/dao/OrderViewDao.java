@@ -12,7 +12,7 @@ public interface OrderViewDao {
 
     OrderView addOrder(OrderView orderView);
 
-    String delOrder(OrderView orderView);
+    void delOrder(OrderView orderView);
 
     OrderView findOrderById(int orderId);
 

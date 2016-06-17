@@ -10,7 +10,7 @@ import java.util.List;
 public interface CourseCategoryDao {
     CourseCategory addCourseCategory(String name);
 
-    String delCourseCategory(String name);
+    void delCourseCategory(String name);
 
     CourseCategory findCourseCategoryByName(String name);
 

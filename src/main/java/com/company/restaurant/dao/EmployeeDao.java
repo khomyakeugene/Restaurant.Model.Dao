@@ -10,9 +10,9 @@ import java.util.List;
 public interface EmployeeDao {
     Employee addEmployee(Employee employee);
 
-    String delEmployee(Employee employee);
+    void delEmployee(Employee employee);
 
-    String delEmployee(int employeeId);
+    void delEmployee(int employeeId);
 
     Employee findEmployeeById(int employeeId);
 

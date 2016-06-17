@@ -10,7 +10,7 @@ import java.util.List;
 public interface TableDao {
     Table addTable(Table table);
 
-    String delTable(Table table);
+    void delTable(Table table);
 
     Table findTableById(int tableId);
 

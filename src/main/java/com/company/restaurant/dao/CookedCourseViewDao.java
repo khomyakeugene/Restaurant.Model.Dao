@@ -12,7 +12,7 @@ import java.util.List;
 public interface CookedCourseViewDao {
     CookedCourseView addCookedCourse(Course course, Employee employee, Float weight);
 
-    String delCookedCourse(CookedCourseView cookedCourseView);
+    void delCookedCourse(CookedCourseView cookedCourseView);
 
     List<CookedCourseView> findAllCookedCourses();
 }

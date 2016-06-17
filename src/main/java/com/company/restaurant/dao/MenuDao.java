@@ -12,9 +12,9 @@ import java.util.List;
 public interface MenuDao {
     Menu addMenu(String name);
 
-    String delMenu(String name);
+    void delMenu(String name);
 
-    String delMenu(Menu menu);
+    void delMenu(Menu menu);
 
     Menu findMenuByName(String name);
 

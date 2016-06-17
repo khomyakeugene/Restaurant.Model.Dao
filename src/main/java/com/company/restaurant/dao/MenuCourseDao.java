@@ -9,5 +9,5 @@ import com.company.restaurant.model.Menu;
 public interface MenuCourseDao {
     void addCourseToMenu(Menu menu, Course course);
 
-    String delCourseFromMenu(Menu menu, Course course);
+    void delCourseFromMenu(Menu menu, Course course);
 }

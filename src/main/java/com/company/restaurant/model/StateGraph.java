@@ -1,9 +1,11 @@
 package com.company.restaurant.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Yevhen on 22.05.2016.
  */
-public class StateGraph {
+public class StateGraph implements Serializable {
     private String initStateType;
     private String finiteStateType;
     private String actionType;

@@ -12,7 +12,7 @@ import java.util.List;
 public interface MenuCoursesViewDao {
     void addCourseToMenu(Menu menu, Course course);
 
-    String delCourseFromMenu(Menu menu, Course course);
+    void delCourseFromMenu(Menu menu, Course course);
 
     List<MenuCourseView> findMenuCourses(Menu menu);
 

@@ -10,7 +10,7 @@ import java.util.List;
 public interface PortionDao {
     Portion addPortion(Portion portion);
 
-    String delPortion(Portion portion);
+    void delPortion(Portion portion);
 
     List<Portion> findAllPortions();
 
