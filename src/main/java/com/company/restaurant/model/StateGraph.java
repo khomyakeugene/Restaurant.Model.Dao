@@ -51,4 +51,32 @@ public class StateGraph implements Serializable {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof StateGraph)) return false;
+
+        StateGraph that = (StateGraph) o;
+
+        return initStateType != null ? initStateType.equals(that.initStateType) :
+                that.initStateType == null && (finiteStateType != null ?
+                        finiteStateType.equals(that.finiteStateType) :
+                        that.finiteStateType == null && (actionType != null ?
+                                actionType.equals(that.actionType) : that.actionType == null &&
+                                (entityName != null ? entityName.equals(that.entityName) :
+                                        that.entityName == null && (comment != null ?
+                                                comment.equals(that.comment) : that.comment == null))));
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = initStateType != null ? initStateType.hashCode() : 0;
+        result = 31 * result + (finiteStateType != null ? finiteStateType.hashCode() : 0);
+        result = 31 * result + (actionType != null ? actionType.hashCode() : 0);
+        result = 31 * result + (entityName != null ? entityName.hashCode() : 0);
+        result = 31 * result + (comment != null ? comment.hashCode() : 0);
+        return result;
+    }
 }
