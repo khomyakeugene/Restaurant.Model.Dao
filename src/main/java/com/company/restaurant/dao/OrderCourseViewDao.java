@@ -10,9 +10,9 @@ import java.util.List;
  * Created by Yevhen on 23.05.2016.
  */
 public interface OrderCourseViewDao {
-    void addCourseToOrder(OrderView orderView, Course course, int quantity);
+    void addCourseToOrder(OrderView orderView, Course course);
 
-    void takeCourseFromOrder(OrderView orderView, Course course, int quantity);
+    void takeCourseFromOrder(OrderView orderView, Course course);
 
     List<OrderCourseView> findAllOrderCourses(OrderView orderView);
 

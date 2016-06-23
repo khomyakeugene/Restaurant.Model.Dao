@@ -19,12 +19,4 @@ public class OrderCourse extends IntegerLinkObject  {
     public void setOrderId(int orderId) {
         setSecondId(orderId);
     }
-
-    public Integer getCourseQuantity() {
-        return getIntegerLinkData();
-    }
-
-    public void setCourseQuantity(Integer courseQuantity) {
-        setIntegerLinkData(courseQuantity);
-    }
 }
