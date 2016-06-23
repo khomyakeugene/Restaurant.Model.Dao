@@ -1,5 +1,6 @@
 package com.company.restaurant.dao;
 
+import com.company.restaurant.model.Course;
 import com.company.restaurant.model.Order;
 
 import java.util.List;
@@ -23,4 +24,12 @@ public interface OrderDao {
     List<Order> findAllOrders(String stateType);
 
     Order updOrderState(Order order, String stateType);
+
+    void addCourseToOrder(Order order, Course course);
+
+    void takeCourseFromOrder(Order order, Course course);
+
+    List<Course> findAllOrderCourses(Order order);
+
+    Course findOrderCourseByCourseId(Order order, int courseId);
 }
