@@ -5,26 +5,8 @@ import java.io.Serializable;
 /**
  * Created by Yevhen on 21.05.2016.
  */
-public class LinkObject  implements Serializable {
-    private int firstId;
-    private int secondId;
+public class LinkObject extends JoinObject implements Serializable  {
     protected String linkData;
-
-    public int getFirstId() {
-        return firstId;
-    }
-
-    public void setFirstId(int firstId) {
-        this.firstId = firstId;
-    }
-
-    public int getSecondId() {
-        return secondId;
-    }
-
-    public void setSecondId(int secondId) {
-        this.secondId = secondId;
-    }
 
     public String getLinkData() {
         return linkData;
@@ -41,14 +23,17 @@ public class LinkObject  implements Serializable {
 
         LinkObject that = (LinkObject) o;
 
-        return firstId == that.firstId && secondId == that.secondId;
+        return getFirstId() == that.getFirstId() && getSecondId() == that.getSecondId() &&
+                (getLinkData() != null ? getLinkData().equals(that.getLinkData()) :
+                        that.getLinkData() == null);
 
     }
 
     @Override
     public int hashCode() {
-        int result = firstId;
-        result = 31 * result + secondId;
+        int result = getFirstId();
+        result = 31 * result + getSecondId();
+        result = 31 * result + (getLinkData() != null ? getLinkData().hashCode() : 0);
         return result;
     }
 }

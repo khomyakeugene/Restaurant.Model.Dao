@@ -3,7 +3,7 @@ package com.company.restaurant.model;
 /**
  * Created by Yevhen on 13.06.2016.
  */
-public class OrderCourse extends IntegerLinkObject  {
+public class OrderCourse extends JoinObject  {
     public int getCourseId() {
         return getFirstId();
     }
