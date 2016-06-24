@@ -1,7 +1,6 @@
 package com.company.restaurant.dao;
 
 import com.company.restaurant.model.Course;
-import com.company.restaurant.model.OrderCourseView;
 import com.company.restaurant.model.OrderView;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public interface OrderCourseViewDao {
 
     void takeCourseFromOrder(OrderView orderView, Course course);
 
-    List<OrderCourseView> findAllOrderCourses(OrderView orderView);
+    List<Course> findAllOrderCourses(OrderView orderView);
 
-    OrderCourseView findOrderCourseByCourseId(OrderView orderView, int courseId);
+    Course findOrderCourseByCourseId(OrderView orderView, int courseId);
 }
