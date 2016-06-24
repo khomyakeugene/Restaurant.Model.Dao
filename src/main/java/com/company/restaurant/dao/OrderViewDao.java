@@ -26,9 +26,9 @@ public interface OrderViewDao {
 
     OrderView updOrderState(OrderView orderView, String stateType);
 
-    void addCourseToOrder(Order order, Course course);
+    void addCourseToOrder(OrderView orderView, Course course);
 
-    void takeCourseFromOrder(Order order, Course course);
+    void takeCourseFromOrder(OrderView orderView, Course course);
 
     List<Course> findAllOrderCourses(Order order);
 

@@ -9,9 +9,9 @@ import java.util.List;
  * Created by Yevhen on 13.06.2016.
  */
 public interface OrderCourseDao {
-    void addCourseToOrder(Order order, Course course);
+    <T extends Order> void addCourseToOrder(T order, Course course);
 
-    void takeCourseFromOrder(Order order, Course course);
+    <T extends Order> void takeCourseFromOrder(T order, Course course);
 
     List<Course> findAllOrderCourses(Order order);
 
