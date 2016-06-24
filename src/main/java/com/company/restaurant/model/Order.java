@@ -1,17 +1,21 @@
 package com.company.restaurant.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Yevhen on 12.06.2016.
  */
 public class Order {
     private int orderId;
-    private int tableId;
-    private int employeeId;
-    private String stateType;
     private String orderNumber;
     private Timestamp orderDatetime;
+
+    private State state = new State();
+    private Employee waiter = new Employee();
+    private Table table = new Table();
+    private List<Course> courses = new ArrayList<>();
 
     public int getOrderId() {
         return orderId;
@@ -22,27 +26,27 @@ public class Order {
     }
 
     public int getTableId() {
-        return tableId;
+        return table.getTableId();
     }
 
     public void setTableId(int tableId) {
-        this.tableId = tableId;
+        table.setTableId(tableId);
     }
 
     public int getEmployeeId() {
-        return employeeId;
+        return waiter.getEmployeeId();
     }
 
     public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
+        waiter.setEmployeeId(employeeId);
     }
 
     public String getStateType() {
-        return stateType;
+        return state.getType();
     }
 
     public void setStateType(String stateType) {
-        this.stateType = stateType;
+        state.setType(stateType);
     }
 
     public String getOrderNumber() {
@@ -59,5 +63,68 @@ public class Order {
 
     public void setOrderDatetime(Timestamp orderDatetime) {
         this.orderDatetime = orderDatetime;
+    }
+
+    public Employee getWaiter() {
+        return waiter;
+    }
+
+    public void setWaiter(Employee waiter) {
+        this.waiter = waiter;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public Table getTable() {
+        return table;
+    }
+
+    public void setTable(Table table) {
+        this.table = table;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Order)) return false;
+
+        Order order = (Order) o;
+
+        return orderId == order.orderId && (orderNumber != null ?
+                orderNumber.equals(order.orderNumber) :
+                order.orderNumber == null && (orderDatetime != null ?
+                        orderDatetime.equals(order.orderDatetime) :
+                        order.orderDatetime == null && (waiter != null ?
+                                waiter.equals(order.waiter) :
+                                order.waiter == null && (table != null ?
+                                        table.equals(order.table) :
+                                        order.table == null && (courses != null ?
+                                                courses.equals(order.courses) : order.courses == null)))));
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = orderId;
+        result = 31 * result + (orderNumber != null ? orderNumber.hashCode() : 0);
+        result = 31 * result + (orderDatetime != null ? orderDatetime.hashCode() : 0);
+        result = 31 * result + (waiter != null ? waiter.hashCode() : 0);
+        result = 31 * result + (table != null ? table.hashCode() : 0);
+        result = 31 * result + (courses != null ? courses.hashCode() : 0);
+        return result;
     }
 }

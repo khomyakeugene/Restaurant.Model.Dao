@@ -5,11 +5,10 @@ package com.company.restaurant.model;
  */
 public class Course {
     private int courseId;
-    private int categoryId;
     private String name;
     private Float weight;
     private Float cost;
-    private String courseCategoryName;
+    private CourseCategory courseCategory = new CourseCategory();
 
     public int getCourseId() {
         return courseId;
@@ -20,11 +19,11 @@ public class Course {
     }
 
     public int getCategoryId() {
-        return categoryId;
+        return courseCategory.getId();
     }
 
     public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+        courseCategory.setId(categoryId);
     }
 
     public String getName() {
@@ -52,10 +51,43 @@ public class Course {
     }
 
     public String getCourseCategoryName() {
-        return courseCategoryName;
+        return courseCategory.getName();
     }
 
     public void setCourseCategoryName(String courseCategoryName) {
-        this.courseCategoryName = courseCategoryName;
+        courseCategory.setName(courseCategoryName);
+    }
+
+    public CourseCategory getCourseCategory() {
+        return courseCategory;
+    }
+
+    public void setCourseCategory(CourseCategory courseCategory) {
+        this.courseCategory = courseCategory;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Course)) return false;
+
+        Course course = (Course) o;
+
+        return courseId == course.courseId && (name != null ?
+                name.equals(course.name) : course.name == null && (weight != null ?
+                weight.equals(course.weight) : course.weight == null && (cost != null ?
+                cost.equals(course.cost) : course.cost == null && (courseCategory != null ?
+                courseCategory.equals(course.courseCategory) : course.courseCategory == null))));
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = courseId;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (weight != null ? weight.hashCode() : 0);
+        result = 31 * result + (cost != null ? cost.hashCode() : 0);
+        result = 31 * result + (courseCategory != null ? courseCategory.hashCode() : 0);
+        return result;
     }
 }

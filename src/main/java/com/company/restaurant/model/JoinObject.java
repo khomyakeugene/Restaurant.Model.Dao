@@ -22,4 +22,21 @@ public class JoinObject {
     public void setSecondId(int secondId) {
         this.secondId = secondId;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof JoinObject)) return false;
+
+        JoinObject that = (JoinObject) o;
+
+        return firstId == that.firstId && secondId == that.secondId;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstId;
+        result = 31 * result + secondId;
+        return result;
+    }
 }

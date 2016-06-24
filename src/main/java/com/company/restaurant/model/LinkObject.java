@@ -20,20 +20,18 @@ public class LinkObject extends JoinObject implements Serializable  {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof LinkObject)) return false;
+        if (!super.equals(o)) return false;
 
         LinkObject that = (LinkObject) o;
 
-        return getFirstId() == that.getFirstId() && getSecondId() == that.getSecondId() &&
-                (getLinkData() != null ? getLinkData().equals(that.getLinkData()) :
-                        that.getLinkData() == null);
+        return linkData != null ? linkData.equals(that.linkData) : that.linkData == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = getFirstId();
-        result = 31 * result + getSecondId();
-        result = 31 * result + (getLinkData() != null ? getLinkData().hashCode() : 0);
+        int result = super.hashCode();
+        result = 31 * result + (linkData != null ? linkData.hashCode() : 0);
         return result;
     }
 }

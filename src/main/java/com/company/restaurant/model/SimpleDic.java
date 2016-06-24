@@ -22,4 +22,22 @@ public class SimpleDic {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SimpleDic)) return false;
+
+        SimpleDic simpleDic = (SimpleDic) o;
+
+        return id == simpleDic.id && (name != null ? name.equals(simpleDic.name) : simpleDic.name == null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
+    }
 }

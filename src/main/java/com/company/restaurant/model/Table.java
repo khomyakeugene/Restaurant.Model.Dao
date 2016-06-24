@@ -29,4 +29,22 @@ public class Table extends SimpleDic {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Table)) return false;
+        if (!super.equals(o)) return false;
+
+        Table table = (Table) o;
+
+        return description != null ? description.equals(table.description) : table.description == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
+    }
 }
