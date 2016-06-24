@@ -1,17 +1,9 @@
 package com.company.restaurant.model;
 
-import java.sql.Timestamp;
-
 /**
  * Created by Yevhen on 22.05.2016.
  */
-public class OrderView {
-    private int orderId;
-    private int tableId;
-    private int employeeId;
-    private String stateType;
-    private String orderNumber;
-    private Timestamp orderDatetime;
+public class OrderView extends Order {
     private String stateTypeName;
     private int employeeJobPositionId;
     private String employeeFirstName;
@@ -21,54 +13,6 @@ public class OrderView {
     private String employeeJobPositionName;
     private int tableNumber;
     private String tableDescription;
-
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
-    public int getTableId() {
-        return tableId;
-    }
-
-    public void setTableId(int tableId) {
-        this.tableId = tableId;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getStateType() {
-        return stateType;
-    }
-
-    public void setStateType(String  stateType) {
-        this.stateType = stateType;
-    }
-
-    public String getOrderNumber() {
-        return orderNumber;
-    }
-
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber;
-    }
-
-    public Timestamp getOrderDatetime() {
-        return orderDatetime;
-    }
-
-    public void setOrderDatetime(Timestamp orderDatetime) {
-        this.orderDatetime = orderDatetime;
-    }
 
     public String getStateTypeName() {
         return stateTypeName;
