@@ -19,5 +19,4 @@ public interface CourseDao {
     Course findCourseById(int courseId);
 
     List<Course> findAllCourses();
-
 }
