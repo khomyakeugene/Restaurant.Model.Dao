@@ -19,14 +19,6 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    public int getJobPositionId() {
-        return jobPosition.getId();
-    }
-
-    public void setJobPositionId(int jobPositionId) {
-        jobPosition.setId(jobPositionId);
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -57,14 +49,6 @@ public class Employee {
 
     public void setSalary(Float salary) {
         this.salary = salary;
-    }
-
-    public String getJobPositionName() {
-        return jobPosition.getName();
-    }
-
-    public void setJobPositionName(String jobPositionName) {
-        jobPosition.setName(jobPositionName);
     }
 
     public JobPosition getJobPosition() {

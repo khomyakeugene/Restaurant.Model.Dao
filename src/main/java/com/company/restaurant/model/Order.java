@@ -25,30 +25,6 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public int getTableId() {
-        return table.getTableId();
-    }
-
-    public void setTableId(int tableId) {
-        table.setTableId(tableId);
-    }
-
-    public int getEmployeeId() {
-        return waiter.getEmployeeId();
-    }
-
-    public void setEmployeeId(int employeeId) {
-        waiter.setEmployeeId(employeeId);
-    }
-
-    public String getStateType() {
-        return state.getType();
-    }
-
-    public void setStateType(String stateType) {
-        state.setType(stateType);
-    }
-
     public String getOrderNumber() {
         return orderNumber;
     }
@@ -73,14 +49,6 @@ public class Order {
         this.waiter = waiter;
     }
 
-    public List<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
-    }
-
     public Table getTable() {
         return table;
     }
@@ -95,6 +63,14 @@ public class Order {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     @Override
