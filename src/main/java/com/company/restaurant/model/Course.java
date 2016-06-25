@@ -18,14 +18,6 @@ public class Course {
         this.courseId = courseId;
     }
 
-    public int getCategoryId() {
-        return courseCategory.getId();
-    }
-
-    public void setCategoryId(int categoryId) {
-        courseCategory.setId(categoryId);
-    }
-
     public String getName() {
         return name;
     }
@@ -48,14 +40,6 @@ public class Course {
 
     public void setCost(Float cost) {
         this.cost = cost;
-    }
-
-    public String getCourseCategoryName() {
-        return courseCategory.getName();
-    }
-
-    public void setCourseCategoryName(String courseCategoryName) {
-        courseCategory.setName(courseCategoryName);
     }
 
     public CourseCategory getCourseCategory() {
