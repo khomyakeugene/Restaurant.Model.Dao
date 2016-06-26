@@ -84,12 +84,13 @@ public class Order {
                 orderNumber.equals(order.orderNumber) :
                 order.orderNumber == null && (orderDatetime != null ?
                         orderDatetime.equals(order.orderDatetime) :
-                        order.orderDatetime == null && (waiter != null ?
-                                waiter.equals(order.waiter) :
-                                order.waiter == null && (table != null ?
-                                        table.equals(order.table) :
-                                        order.table == null && (courses != null ?
-                                                courses.equals(order.courses) : order.courses == null)))));
+                        order.orderDatetime == null && (state != null ?
+                                state.equals(order.state) :
+                                order.state == null && (waiter != null ?
+                                        waiter.equals(order.waiter) :
+                                        order.waiter == null && (table != null ?
+                                                table.equals(order.table) :
+                                                order.table == null)))));
 
     }
 
@@ -98,9 +99,9 @@ public class Order {
         int result = orderId;
         result = 31 * result + (orderNumber != null ? orderNumber.hashCode() : 0);
         result = 31 * result + (orderDatetime != null ? orderDatetime.hashCode() : 0);
+        result = 31 * result + (state != null ? state.hashCode() : 0);
         result = 31 * result + (waiter != null ? waiter.hashCode() : 0);
         result = 31 * result + (table != null ? table.hashCode() : 0);
-        result = 31 * result + (courses != null ? courses.hashCode() : 0);
         return result;
     }
 }
