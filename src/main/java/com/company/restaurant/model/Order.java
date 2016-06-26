@@ -1,8 +1,8 @@
 package com.company.restaurant.model;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Yevhen on 12.06.2016.
@@ -15,7 +15,7 @@ public class Order {
     private State state = new State();
     private Employee waiter = new Employee();
     private Table table = new Table();
-    private List<Course> courses = new ArrayList<>();
+    private Set<Course> courses = new HashSet<>();
 
     public int getOrderId() {
         return orderId;
@@ -65,11 +65,11 @@ public class Order {
         this.state = state;
     }
 
-    public List<Course> getCourses() {
+    public Set<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(List<Course> courses) {
+    public void setCourses(Set<Course> courses) {
         this.courses = courses;
     }
 
