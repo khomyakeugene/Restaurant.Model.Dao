@@ -1,5 +1,6 @@
 package com.company.restaurant.model;
 
+import com.company.restaurant.model.proto.CourseCollecting;
 import com.company.restaurant.model.proto.SimpleDic;
 
 import java.util.HashSet;
@@ -8,7 +9,7 @@ import java.util.Set;
 /**
  * Created by Yevhen on 20.05.2016.
  */
-public class Menu extends SimpleDic {
+public class Menu extends SimpleDic implements CourseCollecting {
     private Set<Course> courses = new HashSet<>();
 
     public int getMenuId() {

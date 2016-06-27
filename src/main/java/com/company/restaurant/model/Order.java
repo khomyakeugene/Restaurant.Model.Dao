@@ -1,5 +1,7 @@
 package com.company.restaurant.model;
 
+import com.company.restaurant.model.proto.CourseCollecting;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.List;
 /**
  * Created by Yevhen on 12.06.2016.
  */
-public class Order {
+public class Order implements CourseCollecting {
     private int orderId;
     private String orderNumber;
     private Timestamp orderDatetime;
