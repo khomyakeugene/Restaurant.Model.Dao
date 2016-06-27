@@ -29,7 +29,7 @@ public interface OrderDao {
 
     void takeCourseFromOrder(Order order, Course course);
 
-    List<Course> findAllOrderCourses(Order order);
+    List<Course> findOrderCourses(Order order);
 
     Course findOrderCourseByCourseId(Order order, int courseId);
 }
