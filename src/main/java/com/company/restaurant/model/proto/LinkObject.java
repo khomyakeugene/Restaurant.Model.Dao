@@ -1,4 +1,4 @@
-package com.company.restaurant.model;
+package com.company.restaurant.model.proto;
 
 import java.io.Serializable;
 

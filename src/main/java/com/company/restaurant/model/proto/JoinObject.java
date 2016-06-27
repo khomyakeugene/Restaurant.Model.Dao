@@ -1,11 +1,11 @@
-package com.company.restaurant.model;
+package com.company.restaurant.model.proto;
 
 /**
  * Created by Yevhen on 23.06.2016.
  */
 public class JoinObject {
-    protected int firstId;
-    protected int secondId;
+    private int firstId;
+    private int secondId;
 
     public int getFirstId() {
         return firstId;

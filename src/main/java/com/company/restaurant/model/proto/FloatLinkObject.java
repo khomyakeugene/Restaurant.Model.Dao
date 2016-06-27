@@ -1,9 +1,9 @@
-package com.company.restaurant.model;
+package com.company.restaurant.model.proto;
 
 /**
  * Created by Yevhen on 23.05.2016.
  */
-public class FloatLinkObject extends LinkObject  {
+public class FloatLinkObject extends LinkObject {
     public Float getFloatLinkData() {
         return (linkData == null) ? null : Float.parseFloat(linkData);
     }

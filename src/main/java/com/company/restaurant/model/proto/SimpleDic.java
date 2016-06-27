@@ -1,4 +1,4 @@
-package com.company.restaurant.model;
+package com.company.restaurant.model.proto;
 
 /**
  * Created by Yevhen on 21.05.2016.

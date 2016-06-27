@@ -1,5 +1,7 @@
 package com.company.restaurant.model;
 
+import com.company.restaurant.model.proto.FloatLinkObject;
+
 /**
  * Created by Yevhen on 15.06.2016.
  */
