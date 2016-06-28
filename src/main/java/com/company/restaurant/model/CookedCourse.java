@@ -1,31 +1,23 @@
 package com.company.restaurant.model;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by Yevhen on 14.06.2016.
  */
-public class CookedCourse implements Serializable {
-    private int employeeId;
-    private int courseId;
+public class CookedCourse {
+    private int cookedCourseId;
     private Timestamp cookDatetime;
     private Float cookWeight;
+    private Course course = new Course();
+    private Employee employee = new Employee();
 
-    public int getEmployeeId() {
-        return employeeId;
+    public int getCookedCourseId() {
+        return cookedCourseId;
     }
 
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public int getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
+    public void setCookedCourseId(int cookedCourseId) {
+        this.cookedCourseId = cookedCourseId;
     }
 
     public Timestamp getCookDatetime() {
@@ -44,6 +36,22 @@ public class CookedCourse implements Serializable {
         this.cookWeight = cookWeight;
     }
 
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,19 +59,24 @@ public class CookedCourse implements Serializable {
 
         CookedCourse that = (CookedCourse) o;
 
-        return employeeId == that.employeeId && courseId == that.courseId &&
-                (cookDatetime != null ? cookDatetime.equals(that.cookDatetime) :
-                        that.cookDatetime == null && (cookWeight != null ? cookWeight.equals(that.cookWeight) :
-                                that.cookWeight == null));
+        return cookedCourseId == that.cookedCourseId && (cookDatetime != null ?
+                cookDatetime.equals(that.cookDatetime) :
+                that.cookDatetime == null && (cookWeight != null ?
+                        cookWeight.equals(that.cookWeight) :
+                        that.cookWeight == null && (course != null ?
+                                course.equals(that.course) :
+                                that.course == null && (employee != null ?
+                                        employee.equals(that.employee) : that.employee == null))));
 
     }
 
     @Override
     public int hashCode() {
-        int result = employeeId;
-        result = 31 * result + courseId;
+        int result = cookedCourseId;
         result = 31 * result + (cookDatetime != null ? cookDatetime.hashCode() : 0);
         result = 31 * result + (cookWeight != null ? cookWeight.hashCode() : 0);
+        result = 31 * result + (course != null ? course.hashCode() : 0);
+        result = 31 * result + (employee != null ? employee.hashCode() : 0);
         return result;
     }
 }
