@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 public class CookedCourse {
     private int cookedCourseId;
     private Timestamp cookDatetime;
-    private Float cookWeight;
+    private Float weight;
     private Course course = new Course();
     private Employee employee = new Employee();
 
@@ -28,12 +28,12 @@ public class CookedCourse {
         this.cookDatetime = cookDatetime;
     }
 
-    public Float getCookWeight() {
-        return cookWeight;
+    public Float getWeight() {
+        return weight;
     }
 
-    public void setCookWeight(Float cookWeight) {
-        this.cookWeight = cookWeight;
+    public void setWeight(Float weight) {
+        this.weight = weight;
     }
 
     public Course getCourse() {
@@ -61,9 +61,9 @@ public class CookedCourse {
 
         return cookedCourseId == that.cookedCourseId && (cookDatetime != null ?
                 cookDatetime.equals(that.cookDatetime) :
-                that.cookDatetime == null && (cookWeight != null ?
-                        cookWeight.equals(that.cookWeight) :
-                        that.cookWeight == null && (course != null ?
+                that.cookDatetime == null && (weight != null ?
+                        weight.equals(that.weight) :
+                        that.weight == null && (course != null ?
                                 course.equals(that.course) :
                                 that.course == null && (employee != null ?
                                         employee.equals(that.employee) : that.employee == null))));
@@ -74,7 +74,7 @@ public class CookedCourse {
     public int hashCode() {
         int result = cookedCourseId;
         result = 31 * result + (cookDatetime != null ? cookDatetime.hashCode() : 0);
-        result = 31 * result + (cookWeight != null ? cookWeight.hashCode() : 0);
+        result = 31 * result + (weight != null ? weight.hashCode() : 0);
         result = 31 * result + (course != null ? course.hashCode() : 0);
         result = 31 * result + (employee != null ? employee.hashCode() : 0);
         return result;
