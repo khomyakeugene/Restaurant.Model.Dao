@@ -15,4 +15,6 @@ public interface IngredientDao {
     List<Ingredient> findAllIngredients();
 
     Ingredient findIngredientById(int ingredientId);
+
+    Ingredient findIngredientByName(String name);
 }
