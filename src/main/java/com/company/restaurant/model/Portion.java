@@ -77,4 +77,15 @@ public class Portion  {
         result = 31 * result + (measuringType != null ? measuringType.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Portion{" +
+                "portionId=" + portionId +
+                ", amount=" + amount +
+                ", description='" + description + '\'' +
+                ", portionType=" + portionType +
+                ", measuringType=" + measuringType +
+                '}';
+    }
 }
