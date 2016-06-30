@@ -34,4 +34,12 @@ public class Waiter extends Employee {
         result = 31 * result + (orders != null ? orders.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Waiter{" +
+                super.toString() +
+                "orders=" + orders +
+                '}';
+    }
 }

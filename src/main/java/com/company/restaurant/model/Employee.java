@@ -90,4 +90,16 @@ public class Employee {
         result = 31 * result + (jobPosition != null ? jobPosition.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", salary=" + salary +
+                ", jobPosition=" + jobPosition +
+                '}';
+    }
 }

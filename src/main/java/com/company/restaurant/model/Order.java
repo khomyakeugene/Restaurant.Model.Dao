@@ -106,4 +106,16 @@ public class Order implements CourseCollecting {
         result = 31 * result + (table != null ? table.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId=" + orderId +
+                ", orderNumber='" + orderNumber + '\'' +
+                ", orderDatetime=" + orderDatetime +
+                ", state=" + state +
+                ", courses=" + courses +
+                ", table=" + table +
+                '}';
+    }
 }
