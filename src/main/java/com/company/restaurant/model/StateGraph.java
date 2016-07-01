@@ -79,4 +79,15 @@ public class StateGraph implements Serializable {
         result = 31 * result + (comment != null ? comment.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "StateGraph{" +
+                "initStateType='" + initStateType + '\'' +
+                ", finiteStateType='" + finiteStateType + '\'' +
+                ", actionType='" + actionType + '\'' +
+                ", entityName='" + entityName + '\'' +
+                ", comment='" + comment + '\'' +
+                '}';
+    }
 }
