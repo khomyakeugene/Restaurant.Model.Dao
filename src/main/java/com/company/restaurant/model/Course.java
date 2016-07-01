@@ -74,4 +74,15 @@ public class Course {
         result = 31 * result + (courseCategory != null ? courseCategory.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseId=" + courseId +
+                ", name='" + name + '\'' +
+                ", weight=" + weight +
+                ", cost=" + cost +
+                ", courseCategory=" + courseCategory +
+                '}';
+    }
 }
