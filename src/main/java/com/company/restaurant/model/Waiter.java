@@ -1,19 +1,23 @@
 package com.company.restaurant.model;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Yevhen on 30.06.2016.
  */
 public class Waiter extends Employee {
-    private List<Order> orders;
+    private WaiterProperty waiterProperty = new WaiterProperty();
 
-    public List<Order> getOrders() {
-        return orders;
+    public WaiterProperty getWaiterProperty() {
+        return waiterProperty;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public Set<Order> getOrders() {
+        return waiterProperty.getOrders();
+    }
+
+    public void setOrders(Set<Order> orders) {
+        waiterProperty.setOrders(orders);
     }
 
     @Override
@@ -24,14 +28,13 @@ public class Waiter extends Employee {
 
         Waiter waiter = (Waiter) o;
 
-        return orders != null ? orders.equals(waiter.orders) : waiter.orders == null;
-
+        return waiterProperty != null ? waiterProperty.equals(waiter.waiterProperty) : waiter.waiterProperty == null;
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + (orders != null ? orders.hashCode() : 0);
+        result = 31 * result + (waiterProperty != null ? waiterProperty.hashCode() : 0);
         return result;
     }
 
@@ -39,7 +42,7 @@ public class Waiter extends Employee {
     public String toString() {
         return "Waiter{" +
                 super.toString() + "\n" +
-                "orders=\n" + orders + "\n" +
+                "waiterProperty=" + waiterProperty +
                 '}';
     }
 }
