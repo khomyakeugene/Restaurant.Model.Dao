@@ -7,20 +7,20 @@ import java.util.Set;
  * Created by Yevhen on 02.07.2016.
  */
 public class CookProperty {
-    private Set<CookedCourse> courses = new HashSet<>();
+    private Set<CookedCourse> cookedCourses = new HashSet<>();
 
-    public Set<CookedCourse> getCourses() {
-        return courses;
+    public Set<CookedCourse> getCookedCourses() {
+        return cookedCourses;
     }
 
-    public void setCourses(Set<CookedCourse> courses) {
-        this.courses = courses;
+    public void setCookedCourses(Set<CookedCourse> cookedCourses) {
+        this.cookedCourses = cookedCourses;
     }
 
     @Override
     public String toString() {
         return "CookProperty{" +
-                "courses=" + courses +
+                "cookedCourses=" + cookedCourses +
                 '}';
     }
 }

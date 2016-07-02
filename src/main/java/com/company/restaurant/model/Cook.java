@@ -12,12 +12,12 @@ public class Cook extends Employee {
         return cookProperty;
     }
 
-    public Set<CookedCourse> getCourses() {
-        return cookProperty.getCourses();
+    public Set<CookedCourse> getCookedCourses() {
+        return cookProperty.getCookedCourses();
     }
 
-    public void setCourses(Set<CookedCourse> courses) {
-        cookProperty.setCourses(courses);
+    public void setCookedCourses(Set<CookedCourse> cookedCourses) {
+        cookProperty.setCookedCourses(cookedCourses);
     }
 
     @Override
@@ -29,7 +29,6 @@ public class Cook extends Employee {
         Cook cook = (Cook) o;
 
         return cookProperty != null ? cookProperty.equals(cook.cookProperty) : cook.cookProperty == null;
-
     }
 
     @Override
