@@ -79,4 +79,14 @@ public class CookedCourse {
         result = 31 * result + (employee != null ? employee.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "CookedCourse{" +
+                "cookedCourseId=" + cookedCourseId +
+                ", cookDatetime=" + cookDatetime +
+                ", weight=" + weight +
+                ", course=" + course +
+                '}';
+    }
 }
