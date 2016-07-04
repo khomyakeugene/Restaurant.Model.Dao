@@ -1,9 +1,11 @@
 package com.company.restaurant.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Yevhen on 04.07.2016.
  */
-public class CourseIngredient {
+public class CourseIngredient implements Serializable {
     private Course course = new Course();
     private Ingredient ingredient = new Ingredient();
     private Portion portion = new Portion();
