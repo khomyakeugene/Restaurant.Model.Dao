@@ -40,4 +40,38 @@ public class CourseIngredient {
     public void setAmount(Float amount) {
         this.amount = amount;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CourseIngredient)) return false;
+
+        CourseIngredient that = (CourseIngredient) o;
+
+        return course != null ? course.equals(that.course) :
+                that.course == null && (ingredient != null ? ingredient.equals(that.ingredient) :
+                        that.ingredient == null && (portion != null ? portion.equals(that.portion) :
+                                that.portion == null && (amount != null ? amount.equals(that.amount) :
+                                        that.amount == null)));
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = course != null ? course.hashCode() : 0;
+        result = 31 * result + (ingredient != null ? ingredient.hashCode() : 0);
+        result = 31 * result + (portion != null ? portion.hashCode() : 0);
+        result = 31 * result + (amount != null ? amount.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseIngredient{" +
+                "course=" + course +
+                ", ingredient=" + ingredient +
+                ", portion=" + portion +
+                ", amount=" + amount +
+                '}';
+    }
 }
