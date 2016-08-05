@@ -12,6 +12,7 @@ public class Course implements Serializable {
     private String name;
     private Float weight;
     private Float cost;
+    private byte[] photo;
     private CourseCategory courseCategory = new CourseCategory();
     private Set<CourseIngredient> courseIngredients = new HashSet<>();
 
@@ -45,6 +46,14 @@ public class Course implements Serializable {
 
     public void setCost(Float cost) {
         this.cost = cost;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     public CourseCategory getCourseCategory() {

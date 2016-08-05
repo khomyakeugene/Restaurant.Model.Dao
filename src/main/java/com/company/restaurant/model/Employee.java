@@ -9,6 +9,7 @@ public class Employee {
     private String secondName;
     private String phoneNumber;
     private Float salary;
+    private byte[] photo;
     private JobPosition jobPosition = new JobPosition();
 
     public int getEmployeeId() {
@@ -49,6 +50,14 @@ public class Employee {
 
     public void setSalary(Float salary) {
         this.salary = salary;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     public JobPosition getJobPosition() {

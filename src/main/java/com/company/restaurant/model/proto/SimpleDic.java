@@ -1,9 +1,11 @@
 package com.company.restaurant.model.proto;
 
+import java.io.Serializable;
+
 /**
  * Created by Yevhen on 21.05.2016.
  */
-public class SimpleDic {
+public class SimpleDic implements Serializable {
     private int id;
     private String name;
 
