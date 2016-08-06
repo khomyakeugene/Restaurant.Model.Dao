@@ -6,7 +6,7 @@ package com.company.restaurant.model.proto;
 public class PhotoHolderObject extends ImageObject {
     private byte[] photo;
 
-    private byte[] getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
