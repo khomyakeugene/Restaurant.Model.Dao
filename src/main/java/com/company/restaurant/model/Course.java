@@ -1,5 +1,7 @@
 package com.company.restaurant.model;
 
+import com.company.restaurant.model.proto.PhotoHolderObject;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,12 +9,11 @@ import java.util.Set;
 /**
  * Created by Yevhen on 19.05.2016.
  */
-public class Course implements Serializable {
+public class Course extends PhotoHolderObject implements Serializable {
     private int courseId;
     private String name;
     private Float weight;
     private Float cost;
-    private byte[] photo;
     private CourseCategory courseCategory = new CourseCategory();
     private Set<CourseIngredient> courseIngredients = new HashSet<>();
 
@@ -46,14 +47,6 @@ public class Course implements Serializable {
 
     public void setCost(Float cost) {
         this.cost = cost;
-    }
-
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
     }
 
     public CourseCategory getCourseCategory() {
