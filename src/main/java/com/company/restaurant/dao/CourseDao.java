@@ -10,6 +10,8 @@ import java.util.List;
 public interface CourseDao {
     Course addCourse(Course course);
 
+    void updCoursePhoto(int courseId, byte[] photo);
+
     void delCourse(Course course);
 
     void delCourse(String name);
@@ -19,4 +21,6 @@ public interface CourseDao {
     Course findCourseById(int courseId);
 
     List<Course> findAllCourses();
+
+    byte[] getCoursePhoto(int courseId);
 }
